@@ -15,7 +15,9 @@
     "@react-three/fiber": "^9.4.2",
     "@react-three/drei": "^10.7.7",
     "@react-three/xr": "^6.6.28",
-    "three": "^0.181.2"
+    "three": "^0.181.2",
+    "vite": "^7.2.7",
+    "@vitejs/plugin-react": "^5.1.2"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
