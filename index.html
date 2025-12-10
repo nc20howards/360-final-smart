@@ -1,0 +1,165 @@
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.28.0",
+    "@react-three/fiber": "https://aistudiocdn.com/@react-three/fiber@^9.4.2",
+    "@react-three/drei": "https://aistudiocdn.com/@react-three/drei@^10.7.7",
+    "@react-three/xr": "https://aistudiocdn.com/@react-three/xr@^6.6.28",
+    "three": "https://aistudiocdn.com/three@^0.181.2"
+  }
+}
+</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>360 Smart School</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <script src="https://unpkg.com/@zxing/browser@latest/umd/zxing-browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@2.3.8/dist/purify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        @keyframes slide-in-right {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        .animate-slide-in-right {
+            animation: slide-in-right 0.3s ease-out forwards;
+        }
+
+        @keyframes slide-in-left-fade {
+            from {
+                transform: translateX(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        .animate-slide-in-left-fade {
+            animation: slide-in-left-fade 0.5s ease-out forwards;
+        }
+
+        @keyframes fade-in-up {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .animate-fade-in-up {
+            animation: fade-in-up 0.5s ease-out forwards;
+        }
+
+        @keyframes pulse-custom {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.9;
+            }
+        }
+        .animate-pulse-custom {
+            animation: pulse-custom 2s infinite;
+        }
+        
+        @keyframes typing-dot {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-4px); }
+        }
+        .animate-typing-dot {
+            animation: typing-dot 1.2s infinite ease-in-out;
+        }
+        
+        @keyframes ripple {
+          0% { box-shadow: 0 0 0 0 rgba(22, 163, 175, 0.7); }
+          70% { box-shadow: 0 0 0 20px rgba(22, 163, 175, 0); }
+          100% { box-shadow: 0 0 0 0 rgba(22, 163, 175, 0); }
+        }
+        .animate-ripple {
+            animation: ripple 2s infinite;
+        }
+
+        @keyframes marquee-scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-100vw); }
+        }
+
+        /* Prose styles for rich text content */
+        .prose a {
+            color: #22d3ee; /* cyan-400 */
+        }
+        .prose a:hover {
+            color: #67e8f9; /* cyan-300 */
+        }
+        
+        /* Fireworks */
+        .fireworks-container > div {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #fff, 0 0 16px #fff, 0 0 24px #0ff;
+            animation: firework-burst 1.8s ease-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes firework-burst {
+            0% { transform: scale(0.1); opacity: 1; }
+            100% { transform: scale(20); opacity: 0; }
+        }
+
+        @keyframes draw-checkmark {
+            from {
+                stroke-dashoffset: 25;
+            }
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+        .checkmark__path {
+            stroke-dasharray: 25;
+            stroke-dashoffset: 25;
+            animation: draw-checkmark 0.4s ease-out forwards;
+        }
+
+        /* Style for date input to ensure text is white and icon is white */
+        input[type="date"] {
+            color-scheme: dark;
+        }
+        
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body class="bg-gray-900">
+    <div id="root"></div>
+    <script type="module" src="index.tsx"></script>
+</body>
+</html>
